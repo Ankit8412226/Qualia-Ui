@@ -1,0 +1,58 @@
+/* Qualia design tokens (light only). Values come from the landing page (Qualia-Landing-Page/assets/qx/home.css).
+   Each colour is "R G B" so Tailwind can add opacity (bg-brand/10). Never hard-code a hex in a component. */
+
+:root {
+  /* surfaces */
+  --canvas: 245 247 251;      /* #F5F7FB  page background */
+  --surface: 255 255 255;     /* cards, panels */
+  --surface-2: 248 249 252;   /* table headers, inset areas */
+  --surface-3: 238 241 247;   /* hover, chips */
+  --line: 228 231 239;        /* #E4E7EF */
+  --line-strong: 208 213 226;
+
+  /* text */
+  --ink: 11 16 32;            /* #0B1020 */
+  --ink-2: 42 49 66;          /* #2A3142 */
+  --muted: 91 100 117;        /* #5B6475 */
+  --faint: 108 116 134;       /* #6C7486  4.4:1 on canvas, for small secondary text */
+
+  /* brand (landing page) */
+  --accent: 232 87 42;        /* #E8572A coral (landing accent), same as brand */
+  --accent-2: 255 154 61;
+  --navy: 30 43 98;           /* #1E2B62 */
+  --night: 10 15 36;          /* #0A0F24 */
+
+  /* status */
+  --success: 31 157 85;       /* #1F9D55 */
+  --warning: 217 145 10;
+  --danger: 200 30 58;        /* deep red, so it never reads as the coral brand */
+  --info: 232 87 42;          /* = brand */
+
+  /* products: ONE brand colour for every product, so the platform feels like one app.
+     Products are told apart by icon and name. */
+  --p-agentflow: 232 87 42;
+  --p-dialflow: 232 87 42;
+  --p-businesspulse: 232 87 42;
+  --p-ultrachat: 232 87 42;
+  --p-insights: 232 87 42;
+  --p-commons: 232 87 42;
+
+  /* the active product's colour; product shells override it */
+  --brand: var(--p-commons);
+  --brand-ink: 255 255 255;
+
+  /* chart series: fixed order, validated for colour-blind separation. Never cycle. */
+  --series-1: 232 87 42;   --series-2: 14 148 166;  --series-3: 109 74 255;
+  --series-4: 199 124 10;  --series-5: 61 107 255;  --series-6: 31 157 85;
+
+  --grad: linear-gradient(100deg, #E8572A 0%, #FF9A3D 100%);
+  --sidebar-w: 248px;
+  color-scheme: light;
+}
+
+/* Product scopes: wrap a product in data-product="…" and every brand-* class follows it. */
+[data-product='agentflow'] { --brand: var(--p-agentflow); }
+[data-product='dialflow'] { --brand: var(--p-dialflow); }
+[data-product='businesspulse'] { --brand: var(--p-businesspulse); }
+[data-product='ultrachat'] { --brand: var(--p-ultrachat); }
+[data-product='insights'] { --brand: var(--p-insights); }

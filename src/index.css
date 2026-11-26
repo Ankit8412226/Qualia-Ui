@@ -1,0 +1,25 @@
+@import './design-system/tokens.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root { height: 100%; }
+  body { @apply bg-canvas text-ink font-sans antialiased; font-size: 14px; line-height: 1.5; }
+  h1, h2, h3, h4 { @apply font-display text-ink; letter-spacing: -0.015em; }
+  ::selection { background: rgb(var(--brand) / .18); }
+  :focus-visible { outline: 2px solid rgb(var(--brand) / .7); outline-offset: 2px; border-radius: 6px; }
+  * { scrollbar-width: thin; scrollbar-color: rgb(var(--line-strong)) transparent; }
+  input[type='number']::-webkit-inner-spin-button { opacity: .4; }
+}
+
+@layer components {
+  .tabular { font-variant-numeric: tabular-nums; }
+  .grad-text { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .grad-bg { background: var(--grad); }
+  .eyebrow { @apply inline-flex items-center gap-2 text-2xs font-semibold uppercase tracking-[.08em] text-ink-muted; }
+  .skeleton { @apply relative overflow-hidden rounded-md bg-surface-3; }
+  .skeleton::after { content: ''; @apply absolute inset-0 -translate-x-full animate-shimmer; background: linear-gradient(90deg, transparent, rgb(var(--surface) / .6), transparent); }
+  .no-scrollbar { scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+}
